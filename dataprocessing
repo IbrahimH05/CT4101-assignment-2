@@ -1,0 +1,41 @@
+# CT4101 Assignment 2 - Data Preprocessing and Visualisation
+
+# importing required libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# loading the dataset
+df = pd.read_csv("steel.csv")
+
+# Basic dataset inspection
+
+# preview of the data
+print("\nPreview of dataset:")
+print(df.head())
+
+# checking for missing values
+print("\nMissing values per column:")
+print(df.isnull().sum())
+
+# summary statistics
+print("\nSummary statistics:")
+print(df.describe())
+
+# Visualising the data
+
+# histogram of the target variable
+plt.figure(figsize=(6,4))
+plt.hist(df["tensile_strength"], bins=20)
+plt.title("Distribution of tensile strength")
+plt.xlabel("Tensile strength")
+plt.ylabel("Frequency")
+plt.tight_layout()
+plt.show()
+
+# correlation heatmap
+plt.figure(figsize=(6,4))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
+plt.title("Feature correlation heatmap")
+plt.tight_layout()
+plt.show()
